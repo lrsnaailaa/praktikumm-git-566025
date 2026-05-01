@@ -33,3 +33,6 @@ File .gitignore digunakan untuk mengabaikan file tertentu.
 
 ## Git Log
 ![Git Log](gitlog.png)
+
+## Branch Protection Rule
+![Branch Protection](branch-protection.png)

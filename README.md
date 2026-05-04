@@ -2,7 +2,7 @@
 
 ## Deskripsi Project
 
-Peoject ini dibuah untuk meemnuhi tugas mata kuliah Praktikum Pemrograman Web 1. Pada Project ini berisi website sederhana untuk latihan penggunaan Git dan GitHub seperti membuat repository, branching, commit, merge, pull request, merge conflict, interactive rebase, branch protection rule, dan release management.
+Project ini dibuat untuk memenuhi tugas mata kuliah Praktikum Pemrograman Web 1. Pada Project ini berisi website sederhana untuk latihan penggunaan Git dan GitHub seperti membuat repository, branching, commit, merge, pull request, merge conflict, interactive rebase, branch protection rule, dan release management.
 
 ## Struktur Project
 1. index.html → halaman web sederhana
@@ -11,6 +11,7 @@ Peoject ini dibuah untuk meemnuhi tugas mata kuliah Praktikum Pemrograman Web 1.
 4. branch-protection.png → screenshot branch protection rule
 5. gitlog.png → screenshot git log
 6. screenshot-website.png → screenshot tampilan website
+7. Screenshot proses pengerjaan tugas
 
 ## Cara Menjalankan Project
 
@@ -27,11 +28,15 @@ cd praktikumm-git-566025
 Perintah tersebut digunakan untuk masuk ke folder project.
 
 3. Buka Project di VS Code
+Kemudian jalankan perintah
+
+```bash
 code .
+```
 
 Perintah tersebut digunakan untuk membuka project menggunakan Visual Studio Code.
 
-Jika perintah code . tidak bisa digunakan, buka VS Code secara manual lalu pilih:
+Ada 2 cara sebenarnya, jika perintah code . tidak bisa digunakan, bisa dilakukan dengan membuka VS Code secara manual kemudian pilih:
 - File
 - Open Folder
 - Pilih folder project
@@ -244,11 +249,13 @@ Langkah-langkah untuk membuat file `.gitignore` adalah sebagai berikut:
 1. Membuat file baru pada Visual Studio Code atau di dalam folder project dengan nama `.gitignore`.
 
 2. Mengisi file `.gitignore` dengan konfigurasi berikut:
-   ```bash
+
+```bash
    .DS_Store
    *.log
    node_modules/
-   ```
+```
+
 3. Menyimpan (save) file yang telah dibuat.
 
 4. Menjalankan perintah berikut pada terminal secara berurutan untuk menyimpan perubahan ke repository GitHub:
@@ -287,14 +294,17 @@ git push origin main
 Sebelum membuat branch baru, pastikan posisi repository berada pada branch main.
 
 Gunakan perintah berikut pada terminal:
+
 ```bash
 git branch
 ```
+
 Apabila output menunjukkan * main, maka posisi branch sudah benar.
 
 #### Branch 1 (Navbar)
 
 Buat branch baru dengan nama feature/navbar menggunakan perintah:
+
 ```bash
 git checkout -b feature/navbar
 ```
@@ -756,7 +766,7 @@ git push origin feature/dark-mode --force
 
 #### Screenshot Website
 
-![Website](websiteresult.png)
+![Website](result_website.png)
 
 #### Dokumentasi Perintah Git
 
@@ -849,3 +859,168 @@ Langkah-langkah yang harus dilakukan untuk membuat issue adalah sebagai berikut:
 Apabila berhasil, issue yang telah dibuat akan muncul di dalam repositori GitHub seperti pada gambar dibawah ini:
 
 ![Website](result_repo.png)
+
+#### Membuat Pull Request 
+
+##### Pull Request 1
+
+- Perintah berikut dijalankan pada terminal untuk berpindah ke branch main dan membuat branch baru:
+
+```bash
+git checkout main
+git checkout -b feature/responsive-navbar
+```
+
+Kemudian dilakukan pengeditan pada file index.html pada bagian navbar. Kode awalnya adalah
+
+```html
+<nav>
+    <a href="#">Home</a> |
+    <a href="#">About</a> |
+    <a href="#">Contact</a>
+</nav>
+```
+
+Diubah menjadi:
+
+```html
+<nav style="padding: 10px;">
+    <a href="#" style="margin: 10px;">Home</a>
+    <a href="#" style="margin: 10px;">About</a>
+    <a href="#" style="margin: 10px;">Contact</a>
+</nav>
+```
+
+- Perubahan ini bertujuan untuk membuat tampilan navbar menjadi lebih rapi dengan menambahkan jarak antar menu.
+- Klik save, agar perubahan tersimpan.
+- Kemudian proses commit dilakukan dengan menjalankan perintah berikut secara berurutan: 
+
+```bash
+git add .
+git commit -m "feat: improve responsive navbar
+
+Closes #4"
+git push origin feature/responsive-navbar
+```
+
+- Buka repositori di GitHub, kemudian klik tombol Compare & Pull Request.
+
+![Website](cprnavbar.png)
+
+- Base branch diatur ke main dan compare branch ke feature/responsive-navbar.
+
+- Mengisi title dan description sesuai dengan perubahan yang dilakukan.
+
+![Website](pull_req_navbar.png)
+
+- Klik Bypass rules and merge (squash), kemudian pilih Confirm Bypass rules and merge (squash).
+
+- Setelah proses merge selesai, branch dihapus dengan memilih Delete Branch.
+
+##### Pull Request 2
+
+- Perintah berikut dijalankan pada terminal untuk berpindah ke branch main dan membuat branch baru:
+
+```bash
+git checkout main
+git checkout -b feature/darkmode-style
+```
+
+Kemudian dilakukan pengeditan pada file index.html pada bagian body dan diubah menjadi:
+
+```html
+body {
+    background-color: #121212;
+    color: white;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+```
+
+- Perubahan ini bertujuan untuk menerapkan tampilan dark mode menggunakan warna background gelap dan teks putih agar website lebih nyaman dilihat. Selain itu ditambahkan pengaturan font menggunakan Arial agar tampilan website terlihat lebih modern dan rapi.
+
+kemudian dilakukan perubahan juga pada button dengan mengganti index.html menjadi:
+
+```html
+<button style="background-color: #333; color: white; padding: 10px; border-radius: 8px; border: none;">
+```
+
+- Perubahan ini bertujuan untuk menerapkan tampilan dark mode yang lebih modern dan tombolnya lebih bagus.
+
+- Klik save, agar perubahan tersimpan.
+- Kemudian proses commit dilakukan dengan menjalankan perintah berikut secara berurutan: 
+
+```bash
+git add .
+git commit -m "style: improve dark mode styling
+
+Closes #5"
+git push origin feature/darkmode-style
+```
+
+- Buka repositori di GitHub, kemudian klik tombol Compare & Pull Request.
+
+![Website](cprdarkmode.png)
+
+- Base branch diatur ke main dan compare branch ke feature/responsive-navbar.
+
+- Mengisi title dan description sesuai dengan perubahan yang dilakukan.
+
+![Website](pull_req_darkmode.png)
+
+- Klik Bypass rules and merge (squash), kemudian pilih Confirm Bypass rules and merge (squash).
+
+- Setelah proses merge selesai, branch dihapus dengan memilih Delete Branch.
+
+##### Pull Request 3
+
+- Perintah berikut dijalankan pada terminal untuk berpindah ke branch main dan membuat branch baru:
+
+```bash
+git checkout main
+git pull origin main
+git checkout -b fix/button-alignment
+```
+
+Kemudian dilakukan pengeditan pada file index.html pada bagian body dan diubah menjadi:
+
+```html
+<button style="margin-top: 10px; padding: 10px;">
+    Klik Saya
+</button>
+```
+
+- Perubahan ini bertujuan untuk Perubahan pada tombol dilakukan dengan menambahkan margin dan padding agar posisi tombol lebih rapi, memiliki jarak yang cukup dari elemen lain, serta meningkatkan kenyamanan tampilan pada halaman website.
+
+- Klik save, agar perubahan tersimpan.
+- Kemudian proses commit dilakukan dengan menjalankan perintah berikut secara berurutan: 
+
+```bash
+git add .
+git commit -m "style: improve dark mode styling
+
+Closes #5"
+git push origin fix/button-alignment
+```
+
+- Buka repositori di GitHub, kemudian klik tombol Compare & Pull Request.
+
+![Website](cprbutton.png)
+
+- Base branch diatur ke main dan compare branch ke feature/responsive-navbar.
+
+- Mengisi title dan description sesuai dengan perubahan yang dilakukan.
+
+![Website](pull_req_button.png)
+
+- Klik Bypass rules and merge (squash), kemudian pilih Confirm Bypass rules and merge (squash).
+
+- Setelah proses merge selesai, branch dihapus dengan memilih Delete Branch.
+
+#### Add Colaborators
+
+![Website](colaborators.png)
+
+#### Membuat New Release
+
+![Website](release.png)
